@@ -1,0 +1,36 @@
+name: tf_gpu_env
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Core Python
+  - python=3.11
+
+  # Data Manipulation & Math
+  - pandas=3.0.0
+  - numpy=2.4.2  # Важливо: TF 2.20+ вже дружить з NumPy 2.x
+  - scikit-learn=1.8.0
+  - scipy=1.17.0
+
+  # Visualization
+  - matplotlib=3.10.8
+  - seaborn=0.13.2
+
+  # Jupyter Ecosystem
+  - jupyterlab=4.5.4
+  - ipykernel=7.2.0
+  - ipython=9.10.0
+
+  # System & Utilities
+  - pip=26.0.1
+  - graphviz # Потрібен для візуалізації архітектури нейромереж
+  
+  # Pip-only packages (TensorFlow stack)
+  - pip:
+      # Основний стек ML з підтримкою GPU
+      - tensorflow[and-cuda]==2.20.0
+      - keras==3.13.2
+      
+      # Додаткові інструменти, які ми використовували
+      - keras-tuner # Для підбору гіперпараметрів
+      - pydot # Інтерфейс до Graphviz для малювання схем моделей
